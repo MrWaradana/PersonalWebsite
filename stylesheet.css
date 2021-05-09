@@ -69,7 +69,7 @@
 /* home section styling*/
 .home{
     display: flex;
-    background: url("https://github.com/MrWaradana/PersonalWebsite/blob/main/relax-formal.png?raw=true");
+    background: url("https://raw.githubusercontent.com/MrWaradana/PersonalWebsite/main/relax-formal.png");
     background-size: cover;
     height: 100vh;
     color:#fff; 
