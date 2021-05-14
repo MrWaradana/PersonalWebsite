@@ -482,18 +482,18 @@ section .title::after{
     margin-bottom: 15px;
 }
 .contact .right form .textarea{
-	height: 30vh;
+    height: 30vh;
     width: 100%;
 }
 .contact .right form .name{
-		height: 45px;
- 	  margin-right: 10px;
+    height: 45px;
+    margin-right: 10px;
 }
 .contact .right form .email{
     margin-left: 10px;
 }
 .contact .right form .subject{
-	height:	45px;	
+    height: 45px;	
 }
 .contact .right form .field input,
 .contact .right form .textarea textarea{
