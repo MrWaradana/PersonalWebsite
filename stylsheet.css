@@ -478,7 +478,6 @@ section .title::after{
 }
 .contact .right form .field,
 .contact .right form .fields .field{
-    height: 45px;
     width: 100%;
     margin-bottom: 15px;
 }
