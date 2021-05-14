@@ -271,6 +271,8 @@ section .title::after{
     text-align: center;
     border-radius: 6px;
     padding: 20px 25px;
+    margin-bottom: 20px;
+    text-align: center;
     cursor: pointer;
 }
 .services .serv-content .card:hover{
