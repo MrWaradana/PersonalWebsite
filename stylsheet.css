@@ -174,7 +174,7 @@ section{
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between  ;
+    justify-content: space-evenly;
 }
 section .title {
     position: relative;
@@ -272,7 +272,6 @@ section .title::after{
     border-radius: 6px;
     padding: 20px 25px;
     margin-bottom: 20px;
-    text-align: center;
     cursor: pointer;
 }
 .services .serv-content .card:hover{
