@@ -7,9 +7,9 @@ export default function About() {
         <div className="mb-24 layout">
             <h1 className="mt-16 text-3xl font-semibold ">About me,</h1>
             <div className="grid grid-cols-1 mt-4 lg:grid-cols-3">
-                <div className=" lg:col-span-2">
+                <div className="text-justify  lg:col-span-2">
                     <p className="mb-4 text-lg font-medium leading-8">
-                        Hi, I'm an Information Systems student currently learning web development and machine learning. I developed an interest in web development during high school and started with basic HTML and CSS.
+                        Hi, I'm an Information Systems student currently learning web development and machine learning. I started an interest in web development during high school and only with basic HTML, CSS and Javascript. Then, developed more skills in web development during my college years at Institut Teknologi Sepuluh Nopember. I also have a passion for machine learning and data science. I am currently learning more about machine learning and data science through online courses and projects.
                     </p>
                     <p className="mb-4 text-lg font-medium leading-8">
                         My first experience with frameworks was Bootstrap and Laravel. Despite having little knowledge of PHP, I decided to dive straight into Laravel. I found it to be a great opportunity to learn a framework directly, rather than starting from scratch with the underlying programming language. I worked on several projects with Laravel and appreciated its simplicity.
