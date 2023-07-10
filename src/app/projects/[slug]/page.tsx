@@ -1,22 +1,47 @@
-import { getPostBySlug } from '@/lib/mdx'
+import { getAllPostsMeta, getPostBySlug } from '@/lib/posts'
 import Image from 'next/image'
-import { Metadata } from 'next'
+import getFormattedDate from '@/lib/getFormattedDate'
 
-const getPageContent = async (slug: string) => {
-    const { meta, content } = await getPostBySlug(slug)
-    return { meta, content }
-}
+export const revalidate = 86400 // 24 hours
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const { meta } = await getPageContent(params.slug)
-    return {
-        title: meta.title,
-        description: meta.title,
+type Props = {
+    params: {
+        slug: string
     }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-    const { meta, content } = await getPageContent(params.slug);
+export async function generateStaticParams() {
+    const posts = await getAllPostsMeta()
+
+    if (!posts) return []
+
+    return posts.map((post: any) => ({
+        params: {
+            slug: post.slug,
+        },
+    }))
+}
+
+
+
+export async function generateMetadata({ params: { slug } }: Props) {
+    const post = await getPostBySlug(`${slug}.mdx`)
+
+    if (!post) return {
+        title: 'Projects not found!'
+    }
+
+    return {
+        title: post.meta.title,
+        description: post.meta.title,
+    }
+}
+
+export default async function Page({ params: { slug } }: Props) {
+    const post = await getPostBySlug(`${slug}.mdx`);
+    const { meta, content }: any = post
+
+    if (!post) return null
     return (
         <section className='mb-24 layout'>
             <Image src={`https://source.unsplash.com/1200x400?${meta.imageDesc}`}
@@ -28,7 +53,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <article className="prose text-justify prose-invert">
                 {content}
             </article>
-        </section>
+        </section >
     )
 };
 
