@@ -15,7 +15,7 @@ export async function generateStaticParams() {
 
     if (!posts) return []
 
-    const tags = new Set(posts.map(post => post.tech).flat())
+    const tags = new Set(posts.map(post => post.tags).flat())
 
     return Array.from(tags).map(tag => ({ tag }))
 }
@@ -32,7 +32,7 @@ export default async function Page({ params: { tag } }: Props) {
 
     if (!post) return null
 
-    const tagPosts = post.filter(post => post.tech.includes(tag))
+    const tagPosts = post.filter(post => post.tags?.includes(tag))
 
     return (
         <section className='mb-24 layout'>

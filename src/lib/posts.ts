@@ -5,6 +5,7 @@ import { BlogPost, Meta } from '../../types'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib'
 import rehypeHighlight from 'rehype-highlight/lib'
 import rehypeSlug from 'rehype-slug'
+import rehypeToc from '@jsdevtools/rehype-toc'
 import Video from '@/components/Video'
 import CustomImage from '@/components/CustomImage'
 
@@ -17,7 +18,7 @@ export const getPostBySlug = async (slug : string): Promise<BlogPost | undefined
 
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
 
-  const { frontmatter, content } = await compileMDX<{title: string, description: string, tech: string[], slug: string, imageDesc:string, date: string}>({
+  const { frontmatter, content } = await compileMDX<{title: string, description: string, tags: string[], slug: string, imageDesc:string, date: string}>({
     source: fileContent,
     components: {
       Video,
@@ -32,6 +33,14 @@ export const getPostBySlug = async (slug : string): Promise<BlogPost | undefined
           [rehypeAutolinkHeadings, {
             behavior: 'wrap',
            }],
+          [rehypeToc, {
+            headings: ['h1', 'h2'],
+            position: 'afterend',
+            cssClasses: {
+              toc: 'toc',
+              link: 'toc-link',
+            },
+          }],
         ],
       },
     }
