@@ -21,8 +21,9 @@ export default function Navbar() {
             <div className='flex gap-6 lg:gap-12 '>
                 {/* github */}
                 <a href="https://github.com/MrWaradana" className='flex flex-row gap-2 text-lg font-semibold lg:text-3xl group min-w-fit'><FaGithub className='translate-y-1 ease group-hover:-translate-y-[.5px]' /></a>
-                {/* twitter */}
-                <a href="https://github.com/MrWaradana" className='flex flex-row gap-2 text-lg font-semibold lg:text-3xl group min-w-fit'><FaLinkedin className='translate-y-1 ease group-hover:-translate-y-[.5px] group-hover:text-[#0077b5] group-hover:bg-white rounded-sm' /></a>
+                {/* linkedin */}
+                <a href="https://www.linkedin.com/in/mrwaradana/" className='flex flex-row gap-2 text-lg font-semibold lg:text-3xl group min-w-fit'><FaLinkedin className='translate-y-1 ease group-hover:-translate-y-[.5px] group-hover:text-[#0077b5] group-hover:bg-white rounded-sm' /></a>
+                {/* email */}
                 <a href="mailto:muhammadridhowaradanda@gmail.com" className='flex flex-row gap-2 text-lg font-semibold lg:text-3xl group min-w-fit'><FiMail className='translate-y-1 ease group-hover:-translate-y-[.5px]' /></a>
             </div>
         </nav >

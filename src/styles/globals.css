@@ -56,7 +56,7 @@
 }
 
 .layout {
-  padding: 0px 240px;
+  padding: 0px 12dvw;
   @media (max-width: 768px) {
     padding: 20px;
   }
