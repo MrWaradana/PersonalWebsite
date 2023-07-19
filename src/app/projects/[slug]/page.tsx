@@ -4,6 +4,7 @@ import getFormattedDate from '@/lib/getFormattedDate'
 import { IconType } from 'react-icons';
 import { FaBootstrap, FaLaravel } from 'react-icons/fa'
 import { BiLogoJquery, BiLogoTypescript, BiLogoTailwindCss } from 'react-icons/bi'
+import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
 import { SiNextdotjs, SiAlpinedotjs } from 'react-icons/si'
 import { DiCodeigniter } from 'react-icons/di'
 import Link from 'next/link'
@@ -18,11 +19,11 @@ const tagIconMap: TagIconMap = {
     'Bootstrap': FaBootstrap,
     'Jquery': BiLogoJquery,
     'Laravel': FaLaravel,
-    'Code Igniter': DiCodeigniter,
-    'Next Js': SiNextdotjs,
+    'Code-Igniter': DiCodeigniter,
+    'Next-Js': SiNextdotjs,
     'Typescript': BiLogoTypescript,
-    'Tailwind CSS': BiLogoTailwindCss,
-    'Alpine Js': SiAlpinedotjs,
+    'Tailwind-CSS': BiLogoTailwindCss,
+    'Alpine-Js': SiAlpinedotjs,
 };
 
 
@@ -79,15 +80,15 @@ export default async function Page({ params: { slug } }: Props) {
 
     if (!post) return null
     return (
-        <section className='mb-24 layout'>
-            <Image src={`https://source.unsplash.com/1200x400?${meta.imageDesc}`}
+        <section className='layout'>
+            <Image src={meta.imageDesc}
                 alt={meta.imageDesc}
                 width={1200}
                 height={400}
                 className='my-4 rounded-md lg:my-8'
             />
             <div className='py-4 mb-6 border-t-2 border-b-2 border-gray-500'>
-                <h1 className='mb-6 text-6xl font-bold'>
+                <h1 className='mb-6 text-3xl font-bold lg:text-6xl'>
                     {meta.title}
                 </h1>
                 <div className='mb-4'>
@@ -104,6 +105,9 @@ export default async function Page({ params: { slug } }: Props) {
             <article className="prose text-justify prose-invert prose-a:!no-underline relative prose-a:font-bold prose-ol:ml-auto prose-p:text-neutral-400 prose-h2:scroll-mt-8">
                 {content}
             </article>
+            <div className='pt-24 pb-6'>
+                <Link href="/projects" className='flex items-center gap-6 text-xl text-neutral-300 hover:text-neutral-100 group'><BsFillArrowLeftSquareFill className='text-xl transition duration-300 ease-in-out group-hover:-translate-x-1' /> All Projects</Link>
+            </div>
         </section >
     )
 };
