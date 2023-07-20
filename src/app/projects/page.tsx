@@ -71,7 +71,7 @@ export default async function Projects() {
                                     {post.tags?.map((tag: string, i: number) => {
                                         const IconComponent = tagIconMap[tag];
                                         return (
-                                            <Link href={`/projects/tags/${tag}`}>
+                                            <Link href={`/projects/tags/${tag}`} key={i}>
                                                 <li key={i} className='flex items-center gap-1 px-2 py-1 mt-2 mr-2 text-xs font-semibold transition duration-300 ease-linear rounded-md text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
                                                     {IconComponent && <IconComponent className='transition duration-300 ease-in-out group-hover:-translate-y-1' />}
                                                     {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
