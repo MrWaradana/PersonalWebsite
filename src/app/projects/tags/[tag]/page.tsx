@@ -52,7 +52,7 @@ export async function generateMetadata({ params: { tag } }: Props) {
 export default async function Page({ params: { tag } }: Props) {
     const posts = await getAllPostsMeta();
 
-    if (!posts) return <p className='mt-12 text-center'>There's no projects available.</p>
+    if (!posts) return <p className='mt-12 text-center'>There&apos;s no projects available.</p>
 
     const tagPosts = posts.filter(post => post.tags?.includes(tag))
     return (
@@ -85,7 +85,7 @@ export default async function Page({ params: { tag } }: Props) {
                             {post.tags?.map((tagName: string, i: number) => {
                                 const IconComponent = tagIconMap[tagName];
                                 return (
-                                    <Link href={`/projects/tags/${tagName}`}>
+                                    <Link href={`/projects/tags/${tagName}`} key={tagName}>
                                         <li key={i} className={`flex items-center gap-1 px-2 py-1 mt-2 mr-2 text-xs font-semibold transition duration-300 ease-linear rounded-md text-neutral-800 bg-neutral-200 hover:-translate-y-1 ${tag === tagName ? `opacity-100` : `opacity-50`}`}>
                                             {IconComponent && <IconComponent className='transition duration-300 ease-in-out group-hover:-translate-y-1 ' />}
                                             {tagName.charAt(0).toUpperCase() + tagName.slice(1) || ''}
