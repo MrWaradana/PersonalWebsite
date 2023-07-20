@@ -5,6 +5,7 @@ type Meta = {
     description: string;
     tags: string[];
     slug: string;
+    site?: string;
     imageDesc: string;
     date: string;
 }

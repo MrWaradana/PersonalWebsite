@@ -55,7 +55,6 @@ export default async function Page({ params: { tag } }: Props) {
     if (!posts) return <p className='mt-12 text-center'>There's no projects available.</p>
 
     const tagPosts = posts.filter(post => post.tags?.includes(tag))
-    console.log(tagPosts)
     return (
         <section className='pt-4 lg:pt-12 layout'>
             <h2 className='text-3xl font-bold'>Result for tags: {tag}</h2>
@@ -63,7 +62,7 @@ export default async function Page({ params: { tag } }: Props) {
                 {tagPosts.map((post: any, i: number) => (
                     <div key={i} className='px-4 pb-6 transition duration-300 ease-in-out border-2 border-transparent rounded-lg hover:border-blue-400 '>
                         <Link
-                            href={`projects/${post.slug}`}
+                            href={`/projects/${post.slug}`}
                             key={post?.title}
                             className='p-3 rounded-md shadow-md group'
                         >
