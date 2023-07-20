@@ -97,6 +97,9 @@ export default async function Page({ params: { slug } }: Props) {
                 <p>
                     {getFormattedDate(meta.date)}
                 </p>
+                <a href={meta.site}>
+                    {meta.site}
+                </a>
             </div>
 
             <p>

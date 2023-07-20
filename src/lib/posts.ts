@@ -18,7 +18,7 @@ export const getPostBySlug = async (slug : string): Promise<BlogPost | undefined
 
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
 
-  const { frontmatter, content } = await compileMDX<{title: string, description: string, tags: string[], slug: string, imageDesc:string, date: string}>({
+  const { frontmatter, content } = await compileMDX<{title: string, description: string, tags: string[], site?: string, slug: string, imageDesc:string, date: string}>({
     source: fileContent,
     components: {
       Video,
