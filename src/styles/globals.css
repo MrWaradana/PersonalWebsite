@@ -55,6 +55,28 @@
   border-radius: 6px;
 }
 
+body {
+  cursor: url("/cursor/cursor.svg"), auto;
+}
+
+a,
+button {
+  cursor: url("/cursor/pointer.svg"), auto;
+}
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+  cursor: url("/cursor/text.svg"), auto;
+}
+
 .layout {
   padding: 0px 12dvw;
   @media (max-width: 768px) {
