@@ -35,7 +35,7 @@ export default async function Home() {
     <main className="min-h-screen layout">
 
       {/* Hero/Introduction */}
-      <section className='relative min-h-[95dvh]' id="hero">
+      <section className='relative min-h-[95dvh] overflow-hidden' id="hero">
         <div className='relative z-50'>
           <h1 className='mt-24 text-5xl font-bold text-neutral-300'>Hi, I&apos;m <a href='/about' className='underline transition duration-300 ease-in-out hover:text-blue-400'>Ridho</a>!</h1>
           <p className='mt-8 text-2xl font-semibold text-neutral-300'>
@@ -49,7 +49,7 @@ export default async function Home() {
           <Link href='/about' className='flex gap-2 px-4 py-2 text-xl font-semibold text-gray-700 bg-blue-100 rounded-full ease opacity-60 hover:opacity-95 max-w-fit'>More about me <FiChevronRight className='text-3xl -translate-y-[1px]' /></Link>
         </div> */}
         </div>
-        <div className='absolute top-0 right-0 w-[32rem] h-[32rem]'>
+        <div className='absolute bottom-20 lg:top-0 lg:right-0 w-[32rem] h-[32rem]'>
           <SvgAnimation />
         </div>
       </section>
@@ -67,7 +67,7 @@ export default async function Home() {
                 <Link
                   href={`projects/${post.slug}`}
                   key={post?.title}
-                  className='p-3 rounded-md shadow-md group'
+                  className='block p-3 rounded-md shadow-md group'
                 >
                   <div className='overflow-hidden rounded-md w-[300px] h-[200px]'>
                     <Image src={`${post.imageDesc}`}
@@ -89,9 +89,11 @@ export default async function Home() {
                     const IconComponent = tagIconMap[tag];
                     return (
                       <Link href={`/projects/tags/${tag}`} key={i}>
-                        <li key={i} className='flex items-center gap-1 px-2 py-1 mt-2 mr-2 text-xs font-semibold transition duration-300 ease-linear rounded-md text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
-                          {IconComponent && <IconComponent className='transition duration-300 ease-in-out group-hover:-translate-y-1' />}
-                          {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
+                        <li key={i} className='flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
+                          {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
+                          <span className='hidden lg:inline-block text-neutral-800'>
+                            {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
+                          </span>
                         </li>
                       </Link>
                     )
