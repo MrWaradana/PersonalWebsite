@@ -50,7 +50,7 @@ export default async function Projects() {
                                 <Link
                                     href={`projects/${post.slug}`}
                                     key={post?.title}
-                                    className='p-3 rounded-md shadow-md group'
+                                    className='block p-3 rounded-md shadow-md group'
                                 >
                                     <div className='overflow-hidden rounded-md w-[300px] h-[200px]'>
                                         <Image src={`${post.imageDesc}`}
@@ -72,9 +72,11 @@ export default async function Projects() {
                                         const IconComponent = tagIconMap[tag];
                                         return (
                                             <Link href={`/projects/tags/${tag}`} key={i}>
-                                                <li key={i} className='flex items-center gap-1 px-2 py-1 mt-2 mr-2 text-xs font-semibold transition duration-300 ease-linear rounded-md text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
-                                                    {IconComponent && <IconComponent className='transition duration-300 ease-in-out group-hover:-translate-y-1' />}
-                                                    {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
+                                                <li key={i} className='flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
+                                                    {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
+                                                    <span className='hidden lg:inline-block text-neutral-800'>
+                                                        {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
+                                                    </span>
                                                 </li>
                                             </Link>
                                         )
