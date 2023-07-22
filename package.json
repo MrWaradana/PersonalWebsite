@@ -1,12 +1,13 @@
 {
   "name": "portfolio-website",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "release": "yarn version --patch && git push --follow-tags"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
