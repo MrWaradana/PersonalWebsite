@@ -86,13 +86,13 @@ export default async function Page({ params: { tag } }: Props) {
                                 const IconComponent = tagIconMap[tagName];
                                 return (
                                     <Link href={`/projects/tags/${tagName}`} key={i}>
-                                    <li key={i} className='flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
-                                        {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
-                                        <span className='hidden lg:inline-block text-neutral-800'>
-                                            {tagName.charAt(0).toUpperCase() + tagName.slice(1) || ''}
-                                        </span>
-                                    </li>
-                                </Link>
+                                        <li key={i} className={`flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 ${tag === tagName ? `opacity-100` : `opacity-50`}`}>
+                                            {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
+                                            <span className='hidden lg:inline-block text-neutral-800'>
+                                                {tagName.charAt(0).toUpperCase() + tagName.slice(1) || ''}
+                                            </span>
+                                        </li>
+                                    </Link>
                                 )
                             })}
                         </ul>
