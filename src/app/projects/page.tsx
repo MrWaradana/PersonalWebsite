@@ -1,30 +1,8 @@
-import Link from 'next/link';
 import { getAllPostsMeta } from '../../lib/posts';
-import { IconType } from 'react-icons';
-import { FaBootstrap, FaLaravel } from 'react-icons/fa'
-import { BiLogoJquery, BiLogoTypescript, BiLogoTailwindCss } from 'react-icons/bi'
-import { SiNextdotjs, SiAlpinedotjs } from 'react-icons/si'
-import { DiCodeigniter } from 'react-icons/di'
-import Image from 'next/image';
 import 'highlight.js/styles/atom-one-dark.css'
-import getFormattedDate from '../../lib/getFormattedDate';
+import ProjectCard from '../../components/ProjectCard';
 
 export const revalidate = 86400 // 24 hours
-
-type TagIconMap = {
-    [key: string]: IconType | React.ComponentType<any>;
-};
-
-const tagIconMap: TagIconMap = {
-    'Bootstrap': FaBootstrap,
-    'Jquery': BiLogoJquery,
-    'Laravel': FaLaravel,
-    'Code-Igniter': DiCodeigniter,
-    'Next-Js': SiNextdotjs,
-    'Typescript': BiLogoTypescript,
-    'Tailwind-CSS': BiLogoTailwindCss,
-    'Alpine-Js': SiAlpinedotjs,
-};
 
 export default async function Projects() {
     const posts = await getAllPostsMeta()
@@ -39,7 +17,7 @@ export default async function Projects() {
     return (
         <section className='pt-4 pb-12 lg:py-12'>
             <div className='layout'>
-                <h1 className='text-3xl font-bold'>All Projects</h1>
+                {/* <h2 className='text-3xl font-bold'>All Projects</h2>
                 <div className='grid grid-flow-row mt-6 lg:grid-cols-3 place-items-center'>
                     {posts && posts?.sort(
                         (a, b) =>
@@ -85,7 +63,8 @@ export default async function Projects() {
                             </div>
                         )
                     })}
-                </div>
+                </div> */}
+                <ProjectCard sliceNum={posts.length} />
             </div>
         </section>
     )

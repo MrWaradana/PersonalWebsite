@@ -60,7 +60,7 @@ export default async function Page({ params: { tag } }: Props) {
             <h2 className='text-3xl font-bold'>Result for tags: {tag}</h2>
             <div className='grid grid-flow-row mt-6 lg:grid-cols-3 place-items-center'>
                 {tagPosts.map((post: any, i: number) => (
-                    <div key={i} className='px-4 pb-6 transition duration-300 ease-in-out border-2 border-transparent rounded-lg hover:border-blue-400 '>
+                    <div key={i} className='px-4 pt-3 pb-6 transition duration-300 ease-in-out border rounded-lg border-neutral-600 hover:border-blue-400 '>
                         <Link
                             href={`/projects/${post.slug}`}
                             key={post?.title}
