@@ -1,7 +1,10 @@
 import { FaLinkedin, FaGithub, FaHeart } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
+import version from '../../package.json'
+
 
 export default function Footer() {
+
     return (
         <footer className='py-6 border-t lg:px-0 px-12 text-center border-neutral-500 lg:mx-[12dvw]'>
             <div className='flex flex-col items-center justify-center'>
@@ -18,7 +21,8 @@ export default function Footer() {
                 </div>
                 <div className='flex flex-col items-center justify-center w-full pb-4'>
                     <p className='font-medium text-neutral-300 group'>Made with <FaHeart className='inline mx-1 -translate-y-[2px] group-hover:-translate-y-1 group-hover:text-red-500 transition duration-300 ease-in-out' /> by <a href='#' className='hover:text-blue-400 hover:underline'>MrWaradana</a></p>
-                    <p className='font-medium text-neutral-300'>© 2023</p>
+                    <p className='pb-2 font-medium text-neutral-300'>© 2023</p>
+                    <p className='px-1 font-medium transition duration-300 ease-in-out bg-blue-700 bg-opacity-75 rounded-md text-neutral-100 hover:bg-opacity-100'>{version.version}</p>
                 </div>
             </div>
         </footer>
