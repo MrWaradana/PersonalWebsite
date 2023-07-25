@@ -18,7 +18,7 @@ export default function Navbar() {
                     About
                 </NavLink>
             </ul>
-            <div className='flex gap-6 lg:gap-12 '>
+            <div className='flex gap-6 mt-4 lg:gap-12'>
                 {/* github */}
                 <a href="https://github.com/MrWaradana" className='flex flex-row gap-2 text-lg font-semibold lg:text-3xl group min-w-fit'><FaGithub className='translate-y-1 ease group-hover:-translate-y-[.5px]' /></a>
                 {/* linkedin */}
