@@ -49,6 +49,7 @@ export default async function ProjectCard({ sliceNum = 3, title }: { sliceNum?: 
                                         width={300}
                                         height={200}
                                         className='mb-2 transition duration-300 ease-in-out rounded-md group-hover:scale-105'
+                                        loading='lazy'
                                     />
                                 </div>
                                 <h3 className='text-xl font-semibold'>{post.title}</h3>
