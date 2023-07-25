@@ -33,7 +33,7 @@ export default function Home() {
 
       {/* Projects */}
       <section className='pb-12 lg:pb-24' id='featured-projects'>
-        <ProjectCard />
+        <ProjectCard title={'Featured Projects'} />
       </section>
 
     </main >
