@@ -58,7 +58,7 @@ export default async function Page({ params: { tag } }: Props) {
     return (
         <section className='pt-4 lg:pt-12 layout'>
             <h2 className='text-3xl font-bold'>Result for tags: {tag}</h2>
-            <div className='grid grid-flow-row mt-6 lg:grid-cols-3 place-items-center'>
+            <div className='grid grid-flow-row mt-6 gap-y-6 lg:grid-cols-3 place-items-center'>
                 {tagPosts.map((post: any, i: number) => (
                     <div key={i} className='px-4 pt-3 pb-6 transition duration-300 ease-in-out border rounded-lg border-neutral-600 hover:border-blue-400 '>
                         <Link
@@ -74,6 +74,7 @@ export default async function Page({ params: { tag } }: Props) {
                                     width={300}
                                     height={200}
                                     className='mb-2 transition duration-300 ease-in-out rounded-md group-hover:scale-105'
+                                    loading='lazy'
                                 />
                             </div>
                             <h3 className='text-xl font-semibold'>{post.title}</h3>
