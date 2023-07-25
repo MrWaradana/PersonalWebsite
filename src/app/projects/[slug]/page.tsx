@@ -86,6 +86,7 @@ export default async function Page({ params: { slug } }: Props) {
                 width={1200}
                 height={400}
                 className='my-4 rounded-md lg:my-8'
+                loading='lazy'
             />
             <div className='py-4 mb-6 border-t-2 border-b-2 border-gray-500'>
                 <h1 className='mb-6 text-3xl font-bold lg:text-6xl'>

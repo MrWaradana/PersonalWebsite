@@ -22,7 +22,13 @@ export default function About() {
                     </p>
                 </div>
                 <div className="order-1 my-6 lg:col-span-1 lg:order-2">
-                    <Image className="transition duration-300 ease-in-out lg:hover:scale-105" src={myImg} width={360} height={360} alt="my photo" />
+                    <Image 
+                    className="transition duration-300 ease-in-out lg:hover:scale-105" 
+                    src={myImg} 
+                    width={360} 
+                    height={360} 
+                    alt="my photo"
+                    loading="lazy" />
                 </div>
             </div>
             <SocialLink />

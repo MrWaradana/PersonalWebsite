@@ -19,6 +19,7 @@ export default function CustomImage({ src, alt, priority }: Props) {
                 width={1250}
                 height={750}
                 priority={prty}
+                loading="lazy"
             />
         </div>
     )
