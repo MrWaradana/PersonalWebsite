@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen layout">
 
       {/* Hero/Introduction */}
-      <section className='relative min-h-[95dvh] overflow-hidden' id="hero">
+      <section className='relative min-h-[95dvh] mb-24 overflow-hidden' id="hero">
         <div className='relative z-50'>
           <h1 className='mt-24 text-5xl font-bold text-neutral-300'>Hi, I&apos;m <a href='/about' className='underline transition duration-300 ease-in-out hover:text-blue-400'>Ridho</a>!</h1>
           <p className='mt-8 text-2xl font-semibold text-neutral-300'>
