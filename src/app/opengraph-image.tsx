@@ -14,7 +14,7 @@ export const contentType = 'image/png'
 
 // Font
 const interSemiBold = fetch(
-    new URL('/public/Inter-SemiBold.ttf', import.meta.url)
+    new URL('../../public/Inter-SemiBold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 // Image generation
