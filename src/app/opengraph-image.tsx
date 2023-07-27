@@ -1,5 +1,4 @@
 import { ImageResponse } from 'next/server'
-import { NextApiRequest } from 'next'
 
 // Route segment config
 export const runtime = 'edge'
@@ -15,12 +14,11 @@ export const contentType = 'image/png'
 
 // Font
 const interSemiBold = fetch(
-    new URL('public/Inter-SemiBold.ttf', import.meta.url)
+    new URL('/public/Inter-SemiBold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 // Image generation
-export default async function Image({ params }: { params: { slug: string } }) {
-    const { slug } = params
+export default async function Image() {
     return new ImageResponse(
         (
             // ImageResponse JSX element
