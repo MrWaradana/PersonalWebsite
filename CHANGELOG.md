@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/MrWaradana/PersonalWebsite/compare/v0.1.6...v0.1.7) (2023-07-27)
+
+
+### Features
+
+* add opengraph image, robots.txt, and sitemap ([2c1f4b1](https://github.com/MrWaradana/PersonalWebsite/commit/2c1f4b1bf4b5d69fba3183921f64600fa92f9891))
+
 ### [0.1.6](https://github.com/MrWaradana/PersonalWebsite/compare/v0.1.5...v0.1.6) (2023-07-25)
 
 
