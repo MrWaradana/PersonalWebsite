@@ -24,11 +24,11 @@ const tagIconMap: TagIconMap = {
 };
 
 
-export default async function ProjectCard({ sliceNum = 3, title }: { sliceNum?: number, title: string}) {
+export default async function ProjectCard({ sliceNum = 3, title }: { sliceNum?: number, title: string }) {
     const posts = await getAllPostsMeta()
     return (
         <>
-            <h2 className='text-3xl font-bold transition duration-300 ease-in-out text-neutral-200 hover:text-blue-400'>{title}</h2>
+            <h2 className='text-xl font-bold text-center transition duration-300 ease-in-out md:text-start md:text-3xl text-neutral-200 hover:text-blue-400'>{title}</h2>
             <div className='grid grid-flow-row mt-6 gap-y-6 lg:grid-cols-3 place-items-center'>
                 {posts && posts?.sort(
                     (a, b) =>

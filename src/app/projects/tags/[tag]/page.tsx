@@ -57,9 +57,12 @@ export default async function Page({ params: { tag } }: Props) {
     const tagPosts = posts.filter(post => post.tags?.includes(tag))
     return (
         <section className='pt-4 lg:pt-12 layout'>
-            <h2 className='text-3xl font-bold'>Result for tags: {tag}</h2>
+            <h2 className='text-xl font-bold text-center md:text-start md:text-3xl'>Result for tags: {tag}</h2>
             <div className='grid grid-flow-row mt-6 gap-y-6 lg:grid-cols-3 place-items-center'>
-                {tagPosts.map((post: any, i: number) => (
+                {tagPosts && tagPosts?.sort(
+                    (a, b) =>
+                        new Date(b.date).getTime() - new Date(a.date).getTime(),
+                ).map((post: any, i: number) => (
                     <div key={i} className='px-4 pt-3 pb-6 transition duration-300 ease-in-out border rounded-lg border-neutral-600 hover:border-blue-400 '>
                         <Link
                             href={`/projects/${post.slug}`}

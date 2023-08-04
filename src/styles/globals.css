@@ -78,6 +78,6 @@ h6 {
 .layout {
   padding: 0px 12vw;
   @media (max-width: 768px) {
-    padding: 4px 16px;
+    padding: 4px 12px;
   }
 }
