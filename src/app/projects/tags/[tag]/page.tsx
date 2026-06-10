@@ -3,11 +3,13 @@ import getFormattedDate from '@/lib/getFormattedDate'
 import { IconType } from 'react-icons';
 import { FaBootstrap, FaLaravel } from 'react-icons/fa'
 import { BiLogoJquery, BiLogoTypescript, BiLogoTailwindCss } from 'react-icons/bi'
-import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
+import { BsArrowLeft } from 'react-icons/bs'
+const ArrowLeft = BsArrowLeft as any
 import { SiNextdotjs, SiAlpinedotjs } from 'react-icons/si'
 import { DiCodeigniter } from 'react-icons/di'
 import Link from 'next/link'
 import Image from 'next/image'
+import TagFilterBar from '@/components/TagFilterBar'
 
 export const revalidate = 10
 
@@ -27,9 +29,9 @@ const tagIconMap: TagIconMap = {
 };
 
 type Props = {
-    params: {
+    params: Promise<{
         tag: string
-    }
+    }>
 }
 
 export async function generateStaticParams() {
@@ -42,69 +44,95 @@ export async function generateStaticParams() {
     return Array.from(tags).map(tag => ({ tag }))
 }
 
-export async function generateMetadata({ params: { tag } }: Props) {
-
+export async function generateMetadata({ params }: Props) {
+    const { tag } = await params
     return {
-        title: `Posts about ${tag} ' ~ mrwaradana'`,
+        title: `Projects tagged with ${tag} | mrwaradana`,
     }
 }
 
-export default async function Page({ params: { tag } }: Props) {
+export default async function Page({ params }: Props) {
+    const { tag } = await params
     const posts = await getAllPostsMeta();
 
-    if (!posts) return <p className='mt-12 text-center'>There&apos;s no projects available.</p>
+    if (!posts) return <p className='mt-12 text-center text-zinc-400'>There are no projects available.</p>
 
+    const allTags = Array.from(new Set(posts.flatMap(p => p.tags || [])))
     const tagPosts = posts.filter(post => post.tags?.includes(tag))
+    
     return (
-        <section className='pt-4 lg:pt-12 layout'>
-            <h2 className='text-xl font-bold text-center md:text-start md:text-3xl'>Result for tags: {tag}</h2>
-            <div className='grid grid-flow-row mt-6 gap-y-6 lg:grid-cols-3 place-items-center'>
-                {tagPosts && tagPosts?.sort(
-                    (a, b) =>
-                        new Date(b.date).getTime() - new Date(a.date).getTime(),
-                ).map((post: any, i: number) => (
-                    <div key={i} className='px-4 pt-3 pb-6 transition duration-300 ease-in-out border rounded-lg border-neutral-600 hover:border-blue-400 '>
-                        <Link
-                            href={`/projects/${post.slug}`}
-                            key={post?.title}
-                            className='block p-3 rounded-md shadow-md group'
-                        >
-                            <div className='overflow-hidden rounded-md w-[300px] h-[200px]'>
-                                <Image src={`${post.imageDesc}`}
-                                    // <Image src={`https://source.unsplash.com/300x200?${post.imageDesc}`}
-                                    alt={post.imageDesc}
-                                    // fill
-                                    width={300}
-                                    height={200}
-                                    className='mb-2 transition duration-300 ease-in-out rounded-md group-hover:scale-105'
-                                    loading='lazy'
-                                />
-                            </div>
-                            <h3 className='text-xl font-semibold'>{post.title}</h3>
-                            <time className='text-[12px] text-gray-400'>
-                                {getFormattedDate(post.date)}
-                            </time>
-                        </Link>
-                        <ul className='flex flex-row'>
-                            {post.tags?.map((tagName: string, i: number) => {
-                                const IconComponent = tagIconMap[tagName];
-                                return (
-                                    <Link href={`/projects/tags/${tagName}`} key={i}>
-                                        <li key={i} className={`flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 ${tag === tagName ? `opacity-100` : `opacity-50`}`}>
-                                            {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
-                                            <span className='hidden lg:inline-block text-neutral-800'>
-                                                {tagName.charAt(0).toUpperCase() + tagName.slice(1) || ''}
-                                            </span>
-                                        </li>
-                                    </Link>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                ))}
-            </div>
-            <div className='flex pt-24 pb-6'>
-                <Link href="/projects" className='flex items-center gap-6 text-xl text-neutral-300 hover:text-neutral-100 group'><BsFillArrowLeftSquareFill className='text-xl transition duration-300 ease-in-out group-hover:-translate-x-1' /> All Projects</Link>
+        <section className='min-h-screen py-16 md:py-24 layout'>
+            <div className="max-w-6xl mx-auto space-y-10">
+                <div className="flex flex-col gap-2">
+                    <Link href="/projects" className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-400 hover:text-zinc-100 transition mb-4">
+                        <ArrowLeft className="text-sm" /> Back to all projects
+                    </Link>
+                    <h1 className='text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-100 font-heading'>
+                        Projects
+                    </h1>
+                    <p className="text-zinc-400 text-sm md:text-base">
+                        Showing {tagPosts.length} project{tagPosts.length !== 1 ? 's' : ''} tagged with <span className="text-indigo-400 font-medium">#{tag.replace(/-/g, ' ')}</span>.
+                    </p>
+                </div>
+
+                {/* Tag filter bar */}
+                <TagFilterBar allTags={allTags} activeTag={tag} />
+
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4'>
+                    {tagPosts && tagPosts
+                        ?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                        .map((post: any, i: number) => (
+                            <article 
+                                key={i} 
+                                className='group relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/20 backdrop-blur-sm transition duration-300 hover:border-zinc-700 hover:shadow-lg hover:shadow-indigo-500/[0.02]'
+                            >
+                                <Link
+                                    href={`/projects/${post.slug}`}
+                                    className='block p-4'
+                                >
+                                    <div className='relative w-full h-48 overflow-hidden rounded-lg bg-zinc-950 mb-4 border border-zinc-800/50'>
+                                        <Image 
+                                            src={post.imageDesc}
+                                            alt={post.title}
+                                            fill
+                                            sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
+                                            className='object-cover transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110'
+                                            loading='lazy'
+                                        />
+                                    </div>
+                                    <span className="text-[10px] font-mono text-zinc-500">
+                                        {getFormattedDate(post.date)}
+                                    </span>
+                                    <h3 className='text-lg font-bold text-zinc-200 mt-1 mb-2 group-hover:text-white transition font-heading'>
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                                        {post.description}
+                                    </p>
+                                </Link>
+                                
+                                <div className='px-4 pb-4 pt-2 border-t border-zinc-850/40 flex flex-wrap gap-1.5'>
+                                    {post.tags?.map((tagName: string, idx: number) => {
+                                        const IconComponent = tagIconMap[tagName] as any;
+                                        return (
+                                            <Link 
+                                                href={`/projects/tags/${tagName}`} 
+                                                key={idx}
+                                                className={`inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium rounded transition ${
+                                                    tag === tagName 
+                                                        ? 'bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 hover:bg-indigo-600/40' 
+                                                        : 'bg-zinc-800/50 text-zinc-300 border border-zinc-800 hover:bg-zinc-850'
+                                                }`}
+                                            >
+                                                {IconComponent && <IconComponent className='text-xs' />}
+                                                <span>{tagName.replace('-', ' ')}</span>
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
+                            </article>
+                        ))}
+                </div>
             </div>
         </section >
     )

@@ -1,12 +1,40 @@
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FiMail } from 'react-icons/fi'
+
+const Github = FaGithub as any;
+const Linkedin = FaLinkedin as any;
+const Mail = FiMail as any;
 
 export default function SocialLink() {
     return (
-        <div className='flex flex-col gap-6 lg:gap-12 lg:flex-row'>
-            {/* github */}
-            <a href="https://github.com/MrWaradana" className='flex flex-row gap-2 text-sm font-semibold lg:text-lg group min-w-fit'><FaGithub className='translate-y-1 ease group-hover:-translate-y-[.5px]' />MrWaradana</a>
-            {/* twitter */}
-            <a href="https://www.linkedin.com/in/mrwaradana/" className='flex flex-row gap-2 text-sm font-semibold lg:text-lg group min-w-fit'><FaLinkedin className='translate-y-1 ease group-hover:-translate-y-[.5px] group-hover:text-[#0077b5] group-hover:bg-white rounded-sm' />Muhammad Ridho Waradana</a>
+        <div className='flex flex-wrap gap-x-8 gap-y-4'>
+            <a 
+                href="https://github.com/MrWaradana" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className='flex items-center gap-2.5 text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-200 group'
+            >
+                <Github className='text-lg transition-transform duration-200 group-hover:-translate-y-0.5' />
+                <span>@MrWaradana</span>
+            </a>
+            
+            <a 
+                href="https://www.linkedin.com/in/mrwaradana/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className='flex items-center gap-2.5 text-sm font-medium text-zinc-400 hover:text-indigo-400 transition-colors duration-200 group'
+            >
+                <Linkedin className='text-lg transition-transform duration-200 group-hover:-translate-y-0.5' />
+                <span>Muhammad Ridho Waradana</span>
+            </a>
+
+            <a 
+                href="mailto:muhammadridhowaradanda@gmail.com" 
+                className='flex items-center gap-2.5 text-sm font-medium text-zinc-400 hover:text-zinc-100 transition-colors duration-200 group'
+            >
+                <Mail className='text-lg transition-transform duration-200 group-hover:-translate-y-0.5' />
+                <span>Email me</span>
+            </a>
         </div>
     )
-};
+}

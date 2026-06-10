@@ -1,11 +1,18 @@
 import '@/styles/globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { Metadata } from 'next'
 
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
-const inter = Inter({ subsets: ['latin'] })
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta-sans',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mrwaradana.vercel.app/'),
@@ -23,7 +30,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="favicon.ico" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${plusJakarta.variable} font-sans bg-bg-dark text-text-primary antialiased`}>
         <Navbar />
         {children}
         <Footer />

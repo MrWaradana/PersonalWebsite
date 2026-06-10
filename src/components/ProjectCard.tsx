@@ -23,59 +23,74 @@ const tagIconMap: TagIconMap = {
     'Alpine-Js': SiAlpinedotjs,
 };
 
-
 export default async function ProjectCard({ sliceNum = 3, title }: { sliceNum?: number, title: string }) {
     const posts = await getAllPostsMeta()
+    
     return (
-        <>
-            <h2 className='text-xl font-bold text-center transition duration-300 ease-in-out md:text-start md:text-3xl text-neutral-200 hover:text-blue-400'>{title}</h2>
-            <div className='grid grid-flow-row mt-6 gap-y-6 lg:grid-cols-3 place-items-center'>
-                {posts && posts?.sort(
-                    (a, b) =>
-                        new Date(b.date).getTime() - new Date(a.date).getTime(),
-                ).slice(0, sliceNum).map((post: any, i: number) => {
-                    return (
-                        <div key={i} className='px-4 pt-3 pb-6 transition duration-300 ease-in-out border rounded-lg border-neutral-600 hover:border-blue-400 '>
-                            <Link
-                                href={`projects/${post.slug}`}
-                                key={post?.title}
-                                className='block p-3 rounded-md shadow-md group'
-                            >
-                                <div className='overflow-hidden rounded-md w-[300px] h-[200px]'>
-                                    <Image src={`${post.imageDesc}`}
-                                        // <Image src={`https://source.unsplash.com/300x200?${post.imageDesc}`}
-                                        alt={post.imageDesc}
-                                        // fill
-                                        width={300}
-                                        height={200}
-                                        className='mb-2 transition duration-300 ease-in-out rounded-md group-hover:scale-105'
-                                        loading='lazy'
-                                    />
-                                </div>
-                                <h3 className='text-xl font-semibold'>{post.title}</h3>
-                                <time className='text-[12px] text-gray-400'>
-                                    {getFormattedDate(post.date)}
-                                </time>
-                            </Link>
-                            <ul className='flex flex-row'>
-                                {post.tags?.map((tag: string, i: number) => {
-                                    const IconComponent = tagIconMap[tag];
-                                    return (
-                                        <Link href={`/projects/tags/${tag}`} key={i}>
-                                            <li key={i} className='flex items-center gap-1 px-2 py-1 m-1 font-semibold transition duration-300 ease-linear rounded-md lg:text-xs text-neutral-800 bg-neutral-200 hover:-translate-y-1 '>
-                                                {IconComponent && <IconComponent className='text-lg transition duration-300 ease-in-out group-hover:-translate-y-1 lg:text-xs' />}
-                                                <span className='hidden lg:inline-block text-neutral-800'>
-                                                    {tag.charAt(0).toUpperCase() + tag.slice(1) || ''}
-                                                </span>
-                                            </li>
-                                        </Link>
-                                    )
-                                })}
-                            </ul>
-                        </div>
-                    )
-                })}
+        <div className="w-full">
+            <div className="flex flex-col md:flex-row md:items-baseline md:justify-between border-b border-zinc-800/40 pb-4 mb-8">
+                <h2 className='text-xl md:text-2xl font-bold tracking-tight text-zinc-100 font-heading'>{title}</h2>
+                {sliceNum === 3 && posts && posts.length > 3 && (
+                    <Link href="/projects" className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition mt-2 md:mt-0">
+                        View all projects →
+                    </Link>
+                )}
             </div>
-        </>
+            
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {posts && posts
+                    ?.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+                    .slice(0, sliceNum)
+                    .map((post: any, i: number) => {
+                        return (
+                            <article 
+                                key={i} 
+                                className='group relative flex flex-col justify-between overflow-hidden rounded-xl border border-zinc-800/80 bg-zinc-900/20 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700/60 hover:shadow-lg hover:shadow-indigo-500/[0.02]'
+                            >
+                                <Link
+                                    href={`/projects/${post.slug}`}
+                                    className='block p-4'
+                                >
+                                    <div className='relative w-full h-48 overflow-hidden rounded-lg bg-zinc-950 mb-4 border border-zinc-800/50'>
+                                        <Image 
+                                            src={post.imageDesc}
+                                            alt={post.title}
+                                            fill
+                                            sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
+                                            className='object-cover transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110'
+                                            loading='lazy'
+                                        />
+                                    </div>
+                                    <span className="text-[10px] font-mono text-zinc-500">
+                                        {getFormattedDate(post.date)}
+                                    </span>
+                                    <h3 className='text-lg font-bold text-zinc-200 mt-1 mb-2 group-hover:text-white transition font-heading'>
+                                        {post.title}
+                                    </h3>
+                                    <p className="text-xs text-zinc-400 line-clamp-2 leading-relaxed">
+                                        {post.description}
+                                    </p>
+                                </Link>
+                                
+                                <div className='px-4 pb-4 pt-2 border-t border-zinc-850/40 flex flex-wrap gap-1.5'>
+                                    {post.tags?.map((tag: string, idx: number) => {
+                                        const IconComponent = tagIconMap[tag] as any;
+                                        return (
+                                            <Link 
+                                                href={`/projects/tags/${tag}`} 
+                                                key={idx}
+                                                className='inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium rounded bg-zinc-800/50 text-zinc-300 border border-zinc-800 hover:bg-zinc-800 transition duration-150'
+                                            >
+                                                {IconComponent && <IconComponent className='text-xs' />}
+                                                <span>{tag.replace('-', ' ')}</span>
+                                            </Link>
+                                        )
+                                    })}
+                                </div>
+                            </article>
+                        )
+                    })}
+            </div>
+        </div>
     )
 };
