@@ -170,7 +170,7 @@ export default function ExperienceTimeline() {
                   <h3 className="text-base font-bold text-zinc-100 group-hover:text-white transition duration-200 font-heading">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-zinc-500 mb-3 mt-0.5">{item.company}</p>
+                  <p className="text-xs text-zinc-400 mb-3 mt-0.5">{item.company}</p>
                   <p className="text-sm text-zinc-400 leading-relaxed text-justify">
                     {item.description}
                   </p>

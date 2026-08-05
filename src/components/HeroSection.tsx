@@ -63,7 +63,7 @@ export default function HeroSection() {
 
       {/* Label */}
       <motion.p
-        className="mb-5 text-xs font-mono tracking-[0.2em] text-zinc-600 uppercase"
+        className="mb-5 text-xs font-mono tracking-[0.2em] text-zinc-400 uppercase"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.05 }}
@@ -89,7 +89,7 @@ export default function HeroSection() {
           {/* Underline that expands on hover */}
           <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-indigo-400 to-violet-400 group-hover:w-full transition-all duration-500 ease-out" />
         </a>
-        <span className="text-zinc-500">.</span>
+        <span className="text-zinc-400">.</span>
       </motion.h1>
 
       {/* Typewriter */}
@@ -99,19 +99,19 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.25 }}
       >
-        <p className="text-xl sm:text-2xl text-zinc-500 font-medium leading-snug">
+        <p className="text-xl sm:text-2xl text-zinc-300 font-medium leading-snug">
           A Software Engineer who{' '}
           <br className="hidden sm:block" />
           <span className="text-zinc-100 font-semibold">
             {displayed}
-            <span className="inline-block w-[2px] h-[1.1em] bg-zinc-400 align-middle ml-1 animate-pulse rounded-full" />
+            <span className="inline-block w-[2px] h-[1.1em] bg-indigo-400 align-middle ml-1 animate-pulse rounded-full" />
           </span>
         </p>
       </motion.div>
 
       {/* Description */}
       <motion.p
-        className="mt-6 text-sm sm:text-base text-zinc-500 leading-relaxed max-w-xl"
+        className="mt-6 text-sm sm:text-base text-zinc-300 leading-relaxed max-w-xl"
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.35 }}
@@ -119,7 +119,7 @@ export default function HeroSection() {
         I build full-stack systems and research AI applications, accelerated by{' '}
         {aiStack.map((name, i) => (
           <span key={name}>
-            <span className="text-zinc-400">{name}</span>
+            <span className="text-zinc-200 font-medium">{name}</span>
             {i < aiStack.length - 1 ? ', ' : ' '}
           </span>
         ))}
@@ -140,7 +140,7 @@ export default function HeroSection() {
         ].map((s, i) => (
           <div key={i} className="flex flex-col">
             <span className="text-xl font-bold font-mono text-zinc-100">{s.value}</span>
-            <span className="text-[11px] text-zinc-600 mt-0.5 tracking-wide">{s.label}</span>
+            <span className="text-[11px] text-zinc-400 mt-0.5 tracking-wide">{s.label}</span>
           </div>
         ))}
       </motion.div>
@@ -164,7 +164,7 @@ export default function HeroSection() {
         <SocialLink />
         <Link
           href="/projects"
-          className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-200 transition-colors duration-200 group"
+          className="inline-flex items-center gap-1.5 text-sm text-zinc-300 hover:text-white transition-colors duration-200 group"
         >
           View projects
           <ArrowRight className="text-xs group-hover:translate-x-1 transition-transform duration-200" />

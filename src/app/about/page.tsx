@@ -99,12 +99,12 @@ export default function About() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-4 p-5 rounded-xl border border-zinc-800/60 bg-zinc-900/20 space-y-3">
-                      <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-zinc-600 mb-3">
+                    <div className="mt-4 p-5 rounded-xl border border-zinc-700/60 bg-zinc-900/60 space-y-3">
+                      <p className="text-[10px] font-mono font-semibold uppercase tracking-widest text-zinc-400 mb-3">
                         — Older version (archived)
                       </p>
                       {oldSummary.split('\n\n').map((para, i) => (
-                        <p key={i} className="text-sm text-zinc-500 leading-relaxed text-justify">
+                        <p key={i} className="text-sm text-zinc-200 leading-relaxed text-justify">
                           {para}
                         </p>
                       ))}

@@ -37,7 +37,7 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-zinc-100 font-heading">
             My Journey &amp; Milestones
           </h2>
-          <p className="mt-4 text-sm text-zinc-500">
+          <p className="mt-4 text-sm text-zinc-400">
             A chronological timeline of my academic background, developer roles, and research achievements.
           </p>
         </div>
