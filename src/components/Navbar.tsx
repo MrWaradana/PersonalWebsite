@@ -45,7 +45,7 @@ export default function Navbar() {
                             <Linkedin className="text-lg" />
                         </a>
                         {/* email */}
-                        <a href="mailto:muhammadridhowaradanda@gmail.com" className="text-zinc-400 hover:text-zinc-100 transition duration-200">
+                        <a href="mailto:muhammadridhowaradana@gmail.com" className="text-zinc-400 hover:text-zinc-100 transition duration-200">
                             <Mail className="text-lg" />
                         </a>
                     </div>

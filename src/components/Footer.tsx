@@ -37,7 +37,7 @@ export default function Footer() {
           </a>
           {/* email */}
           <a
-            href="mailto:muhammadridhowaradanda@gmail.com"
+            href="mailto:muhammadridhowaradana@gmail.com"
             className="text-zinc-400 hover:text-zinc-100 transition duration-200"
           >
             <Mail className="text-xl" />
