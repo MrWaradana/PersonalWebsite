@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { BlogPost, Meta } from '../../types'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings/lib'
-import rehypeHighlight from 'rehype-highlight/lib'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import Video from '@/components/Video'
@@ -28,12 +28,12 @@ export const getPostBySlug = async (slug : string): Promise<BlogPost | undefined
       parseFrontmatter: true,
       mdxOptions: {
         rehypePlugins: [
-          rehypeHighlight,
-          rehypeSlug,
-          [rehypeAutolinkHeadings, {
+          rehypeHighlight as any,
+          rehypeSlug as any,
+          [rehypeAutolinkHeadings as any, {
             behavior: 'wrap',
            }],
-          [rehypeToc, {
+          [rehypeToc as any, {
             headings: ['h1', 'h2'],
             position: 'afterend',
             cssClasses: {
