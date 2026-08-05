@@ -127,13 +127,14 @@ export default async function Page({ params }: Props) {
 
                 {/* Detail image */}
                 {meta.imageDesc && (
-                    <div className='relative w-full aspect-video rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950'>
+                    <div className='relative w-full h-64 sm:h-96 md:h-[420px] rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950/60 shadow-xl'>
                         <Image 
                             src={meta.imageDesc}
                             alt={meta.title}
                             fill
                             priority
-                            className='object-cover'
+                            sizes='(max-width: 1200px) 100vw, 1200px'
+                            className='object-cover transition-transform duration-500 ease-in-out'
                         />
                     </div>
                 )}

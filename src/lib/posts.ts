@@ -16,13 +16,18 @@ export const getPostBySlug = async (slug : string): Promise<BlogPost | undefined
   const realSlug = slug.replace(/\.mdx$/, '')
   const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
 
+  if (!fs.existsSync(filePath)) {
+    return undefined
+  }
+
   const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
 
   const { frontmatter, content } = await compileMDX<{title: string, description: string, tags: string[], site?: string, slug: string, imageDesc:string, date: string}>({
     source: fileContent,
     components: {
       Video,
-      CustomImage
+      CustomImage,
+      img: CustomImage as any,
     },
     options: { 
       parseFrontmatter: true,

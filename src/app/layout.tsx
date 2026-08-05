@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${inter.variable} ${plusJakarta.variable} font-sans bg-bg-dark text-text-primary antialiased`}>
         <Navbar />

@@ -78,10 +78,10 @@ export default function About() {
             </div>
 
             {/* Toggle old summary */}
-            <div>
+            <div className='!hidden'>
               <button
                 onClick={() => setShowOld(v => !v)}
-                className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-indigo-400 transition-colors duration-200 border border-zinc-800 hover:border-zinc-700 rounded-full px-3.5 py-1.5 group"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-zinc-500 hover:text-indigo-400 transition-colors duration-200 border border-zinc-800 hover:border-zinc-700 rounded-full px-3.5 py-1.5 group hidden"
               >
                 {showOld ? (
                   <><ChevronUp className="text-sm" /> Hide older version</>
@@ -143,16 +143,19 @@ export default function About() {
               </div>
             </div>
 
-            {/* IEEE link */}
-            <a
-              href="https://ieeexplore.ieee.org/author/708142160979346"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs text-indigo-400 hover:text-indigo-300 border border-indigo-900/50 hover:border-indigo-700/50 rounded-full px-4 py-2 transition mt-2"
-            >
-              <ExternalLink className="text-sm" />
-              IEEE Publications
-            </a>
+            {/* IEEE Publications section */}
+            <div className="pt-2">
+              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-600 mb-3">Research & Publications</p>
+              <a
+                href="https://ieeexplore.ieee.org/author/708142160979346"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-indigo-400 hover:text-indigo-300 border border-indigo-900/50 hover:border-indigo-700/50 rounded-full px-4 py-2 transition"
+              >
+                <ExternalLink className="text-sm" />
+                IEEE Publications
+              </a>
+            </div>
           </div>
 
           {/* Photo side */}

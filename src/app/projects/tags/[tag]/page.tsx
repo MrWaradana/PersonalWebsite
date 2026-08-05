@@ -90,16 +90,18 @@ export default async function Page({ params }: Props) {
                                     href={`/projects/${post.slug}`}
                                     className='block p-4'
                                 >
-                                    <div className='relative w-full h-48 overflow-hidden rounded-lg bg-zinc-950 mb-4 border border-zinc-800/50'>
-                                        <Image 
-                                            src={post.imageDesc}
-                                            alt={post.title}
-                                            fill
-                                            sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-                                            className='object-cover transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110'
-                                            loading='lazy'
-                                        />
-                                    </div>
+                                    {post.imageDesc && (typeof post.imageDesc === 'string' ? post.imageDesc.trim() !== '' : true) && (
+                                        <div className='relative w-full h-48 overflow-hidden rounded-lg bg-zinc-950 mb-4 border border-zinc-800/50'>
+                                            <Image 
+                                                src={post.imageDesc}
+                                                alt={post.title || 'Project thumbnail'}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className='object-cover transition duration-500 ease-in-out group-hover:scale-102 group-hover:brightness-110'
+                                                loading='lazy'
+                                            />
+                                        </div>
+                                    )}
                                     <span className="text-[10px] font-mono text-zinc-500">
                                         {getFormattedDate(post.date)}
                                     </span>
