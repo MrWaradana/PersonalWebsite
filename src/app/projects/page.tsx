@@ -23,9 +23,9 @@ export default async function Projects() {
         <main className='min-h-screen py-16 md:py-24 layout'>
             <div className='max-w-6xl mx-auto space-y-12'>
                 <div className="space-y-4">
-                    <h1 className='text-3xl md:text-5xl font-extrabold tracking-tight text-gradient font-heading'>All Projects.</h1>
+                    <h1 className='text-3xl md:text-5xl font-extrabold tracking-tight text-gradient font-heading pb-4'>All Projects.</h1>
                     <p className='text-zinc-400 text-sm md:text-base max-w-2xl'>
-                        An archive of systems, routing applications, research publications, and web developments I have engineered.
+                        An archive of systems, routing applications, research publications, and web development <br/> I have engineered.
                     </p>
                 </div>
 
